@@ -7,6 +7,7 @@ on:
       - '**.gd'
       - '**.tscn'
       - 'project.godot'
+      - 'export_presets.cfg'
       - '.github/workflows/android-apk.yml'
 jobs:
   export:
@@ -15,7 +16,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Build Android APK with Godot
-        uses: firebelley/godot-export@v6
+        uses: firebelley/godot-export@v5
         with:
           godot-version: 4.3.0
           export-templates: true
