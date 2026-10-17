@@ -18,7 +18,9 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
+        uses: android-actions/setup-android@v4
+        with:
+          packages: 'platform-tools,platforms;android-34,build-tools;34.0.0,cmdline-tools;latest'
 
       - name: Export Android APK with Godot
         uses: firebelley/godot-export@v8.0.0
