@@ -1,0 +1,30 @@
+name: Android APK build
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '**.gd'
+      - '**.tscn'
+      - 'project.godot'
+      - '.github/workflows/android-apk.yml'
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Build Android APK with Godot
+        uses: firebelley/godot-export@v6
+        with:
+          godot-version: 4.3.0
+          export-templates: true
+          presets: Android
+          project-path: .
+          output-path: build/OffroadExtreme.apk
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Offroad-Extreme-Android-APK
+          path: build/OffroadExtreme.apk
+          if-no-files-found: error
